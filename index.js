@@ -2,6 +2,8 @@ if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config();
 }
 
+require("dotenv").config();
+
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -28,7 +30,7 @@ const orderRoutes = require('./routes/order');
 const productApis = require('./routes/api/productapi');
 
 
-const dbUrl = process.env.dbUrl || 'mongodb+srv://root:root@cluster0.6tyxy1i.mongodb.net/test'
+const dbUrl = process.env.dbUrl || process.env("MONGODB_SCRIPT");
 
 mongoose.connect(dbUrl)
     .then(() => console.log('DB Connected'))
